@@ -1,8 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NGN-zkPass
+## Overview
+NGN-zkPass is a frontend application designed to help Nigerians generate and verify proof of their citizenship in order to claim relief funds during disasters. This project utilizes zero-knowledge proof technology to ensure the privacy and security of personal information during the verification process.
+
+## Features
+- **Generate Proof of Citizenship**: Allows users to create a verifiable proof of their Nigerian citizenship.
+- **Verify Proof**: Enables authorities and organizations to validate the provided proof of citizenship quickly and securely.
+- **Secure and Private**: Utilizes zero-knowledge proofs to ensure that personal information remains private and secure during the verification process.
+
+## Prerequisites
+Before you begin, ensure you have met the following requirements:
+
+- Node.js (version 18 or higher)
+- npm (version 10 or higher) or yarn (version 1.22 or higher)
+- A modern web browser (Chrome, Firefox, Edge, etc.)
 
 ## Getting Started
+1. Clone the repo:
+```bash
+git clone https://github.com/NGN-ZKpass/front_end
+```
 
-First, run the development server:
+2. Navigate to the project directory:
+```bash
+cd front_end
+```
+
+3. Install the dependencies:
+```bash
+npm install
+# or
+yarn
+# or
+pnpm install
+# or
+bun install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -14,27 +48,24 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contributing
+We welcome contributions to the NGN-zkPass project. If you would like to contribute, please follow these steps:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some feature'`).
+5. Push to the branch (`git push origin feature/YourFeature`).
+6. Open a pull request.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Please ensure your code adheres to our coding standards and includes appropriate tests.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Contact
+If you have any questions or need further assistance, please open an issue in the repository or contact the project maintainers.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Thank you for using NGN-zkPass to ensure secure and private citizenship verification for relief fund claims in Nigeria.
