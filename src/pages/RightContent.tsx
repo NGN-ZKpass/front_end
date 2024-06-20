@@ -1,7 +1,18 @@
 "use client";
 import Image from "next/image";
+import { verify } from '../pages/api/transgate';
+
 
 function RightContent() {
+
+
+  const handleVerify = async () => {
+    await verify();
+  };
+
+
+
+
   return (
     <>
       <div
@@ -9,13 +20,11 @@ function RightContent() {
         className="bg-gray-900 border border-gray-700 shadow-lg rounded-lg mx-4 md:mx-auto md:max-w-xl mt-8 md:mt-20 p-4 md:p-6"
       >
         <div className="text-white font-roboto text-base lg:text-lg p-4">
-          Claim Your Citizen Reward
+          Claim Your Citizen Relief Funds
         </div>
 
         <div className="text-white font-roboto text-base lg:text-md p-4">
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui
-          blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-          et quas molestias excepturi
+        Welcome to the NIgeria Relief Funds portal, designed to streamline your access to the Nigeria government relief funds. 
         </div>
 
         <div className="text-white font-roboto text-base lg:text-lg p-4 ">
@@ -29,12 +38,12 @@ function RightContent() {
           />
           <div className="text-white font-roboto text-base lg:text-md p-4">
             <p className="mb-2">
-              Note that you cannot claim funds more than twice. If you do, you
-              would be penalized if caught and be withdrawn from every fund
-              scheme of the government.
+              Note:  Ensure you've genrated Nigerian citizenship proof from the <button
+                onClick={() => handleVerify()} className="font-bold  text-green-500 rounded hover:text-red-500"> NIMC website</button> before claiming funds. 
+
             </p>
             <p>
-              Note that you cannot claim funds more than twice. If you do, you
+              Note: that you cannot claim funds more than twice. If you do, you
               would be penalized if caught and be withdrawn from every fund
               scheme of the government.
             </p>

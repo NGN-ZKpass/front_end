@@ -14,6 +14,7 @@ import logo from "../images/logo.png";
 import Image from "next/image";
 import LeftContent from "./LeftContent";
 import RightContent from "./RightContent";
+import { verify } from '../pages/api/transgate';
 
 function App() {
   const { connect, connectors } = useConnect();
@@ -47,6 +48,8 @@ function App() {
     calls,
   });
 
+
+
   // get counter value: read action
   const handleGetCount = async () => {
     let counter = await contract?.get_counter();
@@ -68,22 +71,21 @@ function App() {
               onClick={() => disconnect()}
               className="bg-green-500 text-white py-2 px-4 mt-2 md:mt-0 focus:outline-none shadow hover:bg-green-700 rounded-xl"
             >
-              Disconnect
+              {address?.slice(0, 6)}...{address?.slice(-4)}
             </button>
           ) : (
             <div className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4">
               <button className=" text-white py-2 px-4 mt-2 md:mt-0 focus:outline-none ">
                 Help Center
               </button>
-              {connectors.map((connector) => (
-                <button
-                  key={connector.id}
-                  onClick={() => connect({ connector })}
-                  className="bg-green-500 text-white py-2 px-4 focus:outline-none shadow hover:bg-green-700 rounded-lg"
-                >
-                  {connector.name.toUpperCase()}
-                </button>
-              ))}
+
+              <button
+                onClick={() => connect({ connector: connectors[0] })}
+                className="bg-green-500 text-white py-2 px-4 focus:outline-none shadow hover:bg-green-700 rounded-lg"
+              >
+                Connect Wallet
+              </button>
+       
             </div>
           )}
         </header>

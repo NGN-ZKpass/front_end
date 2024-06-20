@@ -21,7 +21,7 @@
 }
 
 body {
-  background-image: url("../images/IMG_1680.webp");
+  background-image: url("../images/backgorund_image.webp");
   background-size: cover;
   min-height: 100vh;
   display: flex;
