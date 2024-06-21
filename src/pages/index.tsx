@@ -8,36 +8,44 @@ import {
   useContract,
 } from "@starknet-react/core";
 import abi from "../abi/abi.json";
-import { COUNTER_CONTRACT_ADDRESS } from "@/util/constant";
-import { useMemo, useState } from "react";
+import erc20abi from "../abi/erc20.json";
+import nimc_grants_abi from "../abi/nimc_grants.json";
+import { NIMC_CONTRACT_ADDRESS } from "@/util/constant";
+import { useActionState, useMemo, useState } from "react";
 import logo from "../images/logo.png";
 import Image from "next/image";
 import LeftContent from "./LeftContent";
 import RightContent from "./RightContent";
 import { verify } from '../pages/api/transgate';
+import Success from "./Success";
 
 function App() {
   const { connect, connectors } = useConnect();
   const { disconnect } = useDisconnect();
   const { isConnected, address } = useAccount();
   const [value, setValue] = useState<number>(0);
+  const [mintError, setMintError] = useState();
+  const [mintSucess, setMintSucess] = useState("");
 
   // read state
   const { data, isError, isLoading, error } = useContractRead({
     functionName: "get_counter",
     abi,
-    address: COUNTER_CONTRACT_ADDRESS,
+    address: NIMC_CONTRACT_ADDRESS,
     watch: true,
   });
   // increment counter: write action
   const { contract } = useContract({
-    abi: abi,
-    address: COUNTER_CONTRACT_ADDRESS,
+    abi: nimc_grants_abi,
+    address: NIMC_CONTRACT_ADDRESS,
+
   });
 
   const calls = useMemo(() => {
     if (!address || !contract) return;
-    return contract.populateTransaction["increment_counter"]!();
+    console.log(contract);
+    return contract?.populateTransaction["claim"]();
+    //return contract?.claim();
   }, [contract, address]);
 
   const {
@@ -48,7 +56,15 @@ function App() {
     calls,
   });
 
-
+const claim = () => {
+  try {
+    writeAsync()
+    setMintSucess("Minted Succesfully");
+  } catch (error: any ) {
+    setMintError(error);
+  }
+  
+}
 
   // get counter value: read action
   const handleGetCount = async () => {
@@ -92,8 +108,11 @@ function App() {
       </div>
 
       <div className="flex justify-between items-center mt-3">
+        //setSuccess message
+        <p>{mintSucess}</p>
+        <p>{mintError}</p>
         <LeftContent />
-        <RightContent />
+        <RightContent  claim={claim} />
       </div>
     </>
   );

@@ -3,13 +3,18 @@ import Image from "next/image";
 import { verify } from '../pages/api/transgate';
 
 
-function RightContent() {
+
+// Define the type for the props
+interface RightContentProps {
+  writeAsync: () => Promise<void>; // Adjust the return type based on your actual async function
+}
 
 
+const RightContent: React.FC<{ claim: () => void }> = ({ claim }) => {
+  
   const handleVerify = async () => {
     await verify();
   };
-
 
 
 
@@ -50,7 +55,8 @@ function RightContent() {
           </div>
         </div>
 
-        <button className="flex justify-center items-center text-white font-roboto text-base p-4 border-2 border-green-500 w-full md:w-1/2 lg:w-1/3 mt-10 mx-auto">
+        <button className="flex justify-center items-center text-white font-roboto text-base p-4 border-2 border-green-500 w-full md:w-1/2 lg:w-1/3 mt-10 mx-auto"
+        onClick={claim}>
           Claim Funds 🪙
         </button>
       </div>
